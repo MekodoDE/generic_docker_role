@@ -1,0 +1,20 @@
+galaxy_info:
+  role_name: generic_docker_role
+  description: A role to install Docker
+  author: Valtech Mobility
+  company: Valtech Mobility
+
+  issue_tracker_url: https://intranet.valtech.com/vita/servicedesk/customer/portal/10
+
+  min_ansible_version: 2.9
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - ">= 18.04"
+
+  galaxy_tags:
+  - docker
+  - ubuntu
+
+dependencies: []

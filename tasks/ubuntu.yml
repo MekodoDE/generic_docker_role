@@ -1,0 +1,33 @@
+---
+- name: Remove other docker versions
+  package:
+    name:
+      - docker
+      - docker.io
+      - docker-engine
+    state: absent
+
+- name: Install dependencies
+  package:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+    state: present
+
+- name: Add docker repository key
+  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+- name: Add docker repository
+  apt_repository:
+    repo: "{{ generic_docker_ubuntu_repository }}"
+    state: present
+    update_cache: true
+
+- name: Insert/Update configuration using a local file and validate it
+  blockinfile:
+    block: "{{ lookup('file', role_path + '/files/docker_ufw_after_rules') }}"
+    marker: "# {mark} DOCKER UFW FIX #"
+    path: /etc/ufw/after.rules
+  notify: restart ufw

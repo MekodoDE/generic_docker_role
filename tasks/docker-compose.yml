@@ -1,0 +1,12 @@
+---
+- name: Check current docker compose version
+  command: "docker-compose --version"
+  register: generic_docker_compose_cur_version
+  failed_when: false
+
+- name: Install docker compose
+  get_url:
+    url: "{{ generic_docker_compose_url }}"
+    dest: "{{ generic_docker_compose_path }}"
+    mode: 0755
+  when: docker_compose_cur_version.stdout is not defined or docker_compose_version not in docker_compose_cur_version.stdout

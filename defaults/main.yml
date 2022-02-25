@@ -1,0 +1,16 @@
+# docker
+generic_docker_package: "docker-ce"
+generic_docker_daemon_json: {}
+generic_docker_pip_modules:
+  - docker
+
+generic_docker_ubuntu_repository: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+
+# docker compose
+generic_docker_install_compose: true
+generic_docker_compose_version: "1.29.0"
+
+generic_docker_compose_os: "{{ ansible_system }}"
+generic_docker_compose_arch: "{{ ansible_architecture }}"
+generic_docker_compose_url: "https://github.com/docker/compose/releases/download/{{ generic_docker_compose_version }}/docker-compose-{{ generic_docker_compose_os }}-{{ generic_docker_compose_arch }}"
+generic_docker_compose_path: /usr/local/bin/docker-compose
