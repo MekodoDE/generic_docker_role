@@ -7,7 +7,7 @@ Requirements
 ------------
 
 - `become: yes`
-- `gather_facts: yes`
+- `gather_facts: yes` if you don't specify `generic_docker_compose_os` and `generic_docker_compose_arch`
 
 Role Variables
 --------------
