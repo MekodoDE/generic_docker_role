@@ -1,16 +1,32 @@
-# docker
+# Change between docker-ce (Community Edition) and docker-ee (Enterprise Edition).
 generic_docker_package: "docker-ce"
-generic_docker_daemon_json: {}
+
+# Content of the daemon.json
+generic_docker_daemon_json: {
+  "iptables": "false"
+}
+
+# Needed pip modules
 generic_docker_pip_modules:
   - docker
 
+# Ubuntu Docker repository
 generic_docker_ubuntu_repository: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
 
-# docker compose
+# Install docker compose
 generic_docker_install_compose: true
+
+# Docker compose version
 generic_docker_compose_version: "1.29.0"
 
+# Docker compose OS
 generic_docker_compose_os: "{{ ansible_system }}"
+
+# Docker compose architecture
 generic_docker_compose_arch: "{{ ansible_architecture }}"
+
+# Docker compose package
 generic_docker_compose_url: "https://github.com/docker/compose/releases/download/{{ generic_docker_compose_version }}/docker-compose-{{ generic_docker_compose_os }}-{{ generic_docker_compose_arch }}"
+
+# Docker compose install path
 generic_docker_compose_path: /usr/local/bin/docker-compose
