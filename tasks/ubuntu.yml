@@ -24,10 +24,3 @@
     repo: "{{ generic_docker_ubuntu_repository }}"
     state: present
     update_cache: true
-
-- name: Insert/Update configuration using a local file and validate it
-  blockinfile:
-    block: "{{ lookup('file', role_path + '/files/docker_ufw_after_rules') }}"
-    marker: "# {mark} DOCKER UFW FIX #"
-    path: /etc/ufw/after.rules
-  notify: restart ufw
